@@ -47,4 +47,16 @@ public class MainActivityInstrumentedTest {
         // Check that the ShowTextActivity has the correct string in its TextView
         onView(withId(R.id.show_text_view)).check(matches(withText("123")));
     }
+    @Test
+    public void testOpenActivity_withEmptyInput() {
+        // Leave the EditText empty and press the button
+        onView(withId(R.id.editTextUserInput)).perform(typeText(""), closeSoftKeyboard());
+
+        // Click the button to open ShowTextActivity
+        onView(withId(R.id.activityChangeTextBtn)).perform(click());
+
+        // Check that the ShowTextActivity displays empty string
+        onView(withId(R.id.show_text_view)).check(matches(withText("")));
+    }
+
 }
