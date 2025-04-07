@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         final int changeTextBtId = R.id.changeTextBt;
         final int activityChangeTextBtnId = R.id.activityChangeTextBtn;
 
-        if ((text.equals("123") || text.isEmpty())) {
+        if (text.equals("123") || text.isEmpty() || text.equals("abcdef")) {
             if (view.getId() == changeTextBtId) {
                 // First button's interaction: set a text in a text view.
                 mTextView.setText(text);
@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         } else {
             // Show an alert dialog if the input is invalid
-            showAlertDialog("Invalid Input", "Only '123' or empty input is allowed.");
+            showAlertDialog("Invalid Input", "Only '123', empty string, or 'abcdef' are allowed.");
         }
     }
 
