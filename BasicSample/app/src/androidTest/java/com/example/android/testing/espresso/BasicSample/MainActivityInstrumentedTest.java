@@ -30,4 +30,10 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.changeTextBt)).perform(click());
         onView(withId(R.id.textToBeChanged)).check(matches(withText("123")));
     }
+    @Test
+    public void testChangeTextButton_withEmptyInput() {
+        onView(withId(R.id.editTextUserInput)).perform(typeText(""), closeSoftKeyboard());
+        onView(withId(R.id.changeTextBt)).perform(click());
+        onView(withId(R.id.textToBeChanged)).check(matches(withText("")));
+    }
 }
