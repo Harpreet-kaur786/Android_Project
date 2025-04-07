@@ -36,4 +36,15 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.changeTextBt)).perform(click());
         onView(withId(R.id.textToBeChanged)).check(matches(withText("")));
     }
+    @Test
+    public void testOpenActivity_with123Input() {
+        // Type "123" in the EditText
+        onView(withId(R.id.editTextUserInput)).perform(typeText("123"), closeSoftKeyboard());
+
+        // Click the Open Activity and Change Text button
+        onView(withId(R.id.activityChangeTextBtn)).perform(click());
+
+        // Check that the ShowTextActivity has the correct string in its TextView
+        onView(withId(R.id.show_text_view)).check(matches(withText("123")));
+    }
 }
