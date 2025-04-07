@@ -70,16 +70,16 @@ public class MainActivityInstrumentedTest {
     }
 
     // Test: Open second activity with invalid input (anything other than "123" or empty)
-//    @Test
-//    public void testOpenActivity_withInvalidInput() {
-//        // Type some invalid input (not "123" and not empty)
-//        onView(withId(R.id.editTextUserInput)).perform(typeText("InvalidText"), closeSoftKeyboard());
-//
-//        // Click the button to open ShowTextActivity
-//        onView(withId(R.id.activityChangeTextBtn)).perform(click());
-//
-//        // Check that the ShowTextActivity does not display any invalid input
-//        // We expect ShowTextActivity to show an empty string because "InvalidText" is not allowed
-//        onView(withId(R.id.show_text_view)).check(matches(withText("")));
-//    }
+    @Test
+    public void testOpenActivity_withInvalidInput() {
+        // Type some invalid input (not "123" and not empty)
+        onView(withId(R.id.editTextUserInput)).perform(typeText("InvalidText"), closeSoftKeyboard());
+
+        // Click the button to open ShowTextActivity
+        onView(withId(R.id.activityChangeTextBtn)).perform(click());
+
+        // Check that the ShowTextActivity does not display any invalid input
+        // We expect ShowTextActivity to show an empty string because "InvalidText" is not allowed
+        onView(withId(R.id.show_text_view)).check(matches(withText("")));
+    }
 }
