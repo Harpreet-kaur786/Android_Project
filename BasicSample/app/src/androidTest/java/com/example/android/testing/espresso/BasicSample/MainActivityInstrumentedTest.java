@@ -82,4 +82,11 @@ public class MainActivityInstrumentedTest {
         // We expect ShowTextActivity to show an empty string because "InvalidText" is not allowed
         onView(withId(R.id.show_text_view)).check(matches(withText("")));
     }
+    // ✅ New Test: "abcdef" with Change Text button
+    @Test
+    public void testChangeTextButton_withAbcdefInput() {
+        onView(withId(R.id.editTextUserInput)).perform(typeText("abcdef"), closeSoftKeyboard());
+        onView(withId(R.id.changeTextBt)).perform(click());
+        onView(withId(R.id.textToBeChanged)).check(matches(withText("abcdef")));
+    }
 }
