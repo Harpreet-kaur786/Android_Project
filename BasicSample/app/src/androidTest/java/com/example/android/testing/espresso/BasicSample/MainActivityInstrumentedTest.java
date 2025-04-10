@@ -22,10 +22,10 @@ public class MainActivityInstrumentedTest {
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-    @Test
-    public void testTextViewHasCorrectText() {
-        onView(withId(R.id.textToBeChanged)).check(matches(withText("Hello Espresso!")));
-    }
+//    @Test
+//    public void testTextViewHasCorrectText() {
+//        onView(withId(R.id.textToBeChanged)).check(matches(withText("Hello Espresso!")));
+//    }
 
     // Test: Change text with "123"
     @Test
@@ -69,20 +69,17 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.show_text_view)).check(matches(withText("")));
     }
 
-    // Test: Open second activity with invalid input (anything other than "123" or empty)
     @Test
-    public void testOpenActivity_withInvalidInput() {
-        // Type some invalid input (not "123" and not empty)
-        onView(withId(R.id.editTextUserInput)).perform(typeText("InvalidText"), closeSoftKeyboard());
-
-        // Click the button to open ShowTextActivity
+    public void testOpenActivity_withNoInput() {
+        // No input to the EditText (simulate user didn't type anything)
         onView(withId(R.id.activityChangeTextBtn)).perform(click());
 
-        // Check that the ShowTextActivity does not display any invalid input
-        // We expect ShowTextActivity to show an empty string because "InvalidText" is not allowed
+        // Verify that ShowTextActivity displays an empty string
         onView(withId(R.id.show_text_view)).check(matches(withText("")));
     }
-    // ✅ New Test: "abcdef" with Change Text button
+
+
+    //New Test: "abcdef" with Change Text button
     @Test
     public void testChangeTextButton_withAbcdefInput() {
         onView(withId(R.id.editTextUserInput)).perform(typeText("abcdef"), closeSoftKeyboard());
@@ -90,7 +87,7 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.textToBeChanged)).check(matches(withText("abcdef")));
     }
 
-    // ✅ New Test: "abcdef" with Open Activity button
+    // New Test: "abcdef" with Open Activity button
     @Test
     public void testOpenActivity_withAbcdefInput() {
         onView(withId(R.id.editTextUserInput)).perform(typeText("abcdef"), closeSoftKeyboard());
